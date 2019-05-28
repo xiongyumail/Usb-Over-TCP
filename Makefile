@@ -1,15 +1,15 @@
 all:
 	#rm -f usb-network-device usb-network-host
 	g++ -I /usr/local/include -lusb-1.0 host/main.cpp -o usb-network-host
-	g++ -I /usr/local/include  -lusb-1.0 device/main.cpp -o usb-network-device
+	g++ -I /usr/local/include -lpthread -lusb-1.0 device/main.cpp -o usb-network-device
 
-host:
+h:
 	rm -f usb-network-host
 	g++ -lusb-1.0 host/main.cpp -o usb-network-host
 
-device:
+d:
 	rm -f usb-network-device
-	g++ -lusb-1.0 device/main.cpp -o usb-network-device
+	g++ -lpthread -lusb-1.0 device/main.cpp -o usb-network-device
 
 clean:
 	rm -f usb-network-device usb-network-host
